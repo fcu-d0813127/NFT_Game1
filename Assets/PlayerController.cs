@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // [SerializeField]:是private，但仍能出現在inspector
+    // [SerializeField] : 很像private，但在unity右側欄位可看到 
     [SerializeField] float move_speed = 10.0f;
     [SerializeField] GameObject background1;
     [SerializeField] GameObject background2;
     [SerializeField] GameObject enemy;
+    [SerializeField] GameObject entry0to1;
+    [SerializeField] GameObject entry1to0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    // Time.deltaTime:這一次Update()與下一次Update()呼叫之間隔時間，可解決個別電腦速度不同造成之呼叫速度差異
+    // Time.deltaTime:Update與下一次update時間花了多久，可解決電腦速度不同執行速度差異
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
@@ -41,33 +43,43 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.K))
         {
-            enemy.SetActive(false);
+            Debug.Log(Vector3.Distance(enemy.transform.position, transform.position));
+            if (Vector3.Distance(enemy.transform.position, transform.position) <= 3)
+                enemy.SetActive(false);
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.contacts[0].normal == new Vector2(1.0f, 0))
+        if (other.gameObject.tag == "entry0to1")
         {
+            Debug.Log("撞到了啦");
             if (!background1.activeSelf)
             {
                 return;
             }
+            entry0to1.SetActive(false);
+            entry1to0.SetActive(true);
             background1.SetActive(false);
             background2.SetActive(true);
             enemy.SetActive(true);
-            transform.position = new Vector3(7.0f, -3.8f, 0);
+            transform.position = new Vector3(7.0f, 3.8f, 0);
         }
-        else if (other.contacts[0].normal == new Vector2(-1.0f, 0))
+        else if (other.gameObject.tag == "entry1to0")
         {
             if (background1.activeSelf)
             {
                 return;
             }
+            entry0to1.SetActive(true);
+            entry1to0.SetActive(false);
             background1.SetActive(true);
             background2.SetActive(false);
             enemy.SetActive(false);
             transform.position = new Vector3(-7.0f, -3.8f, 0);
+        }
+        else{
+            Debug.Log("撞到未知的東西，建議檢查程式!");
         }
     }
 }
