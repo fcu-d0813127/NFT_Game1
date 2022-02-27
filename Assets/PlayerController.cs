@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "entry0to1")
         {
-            Debug.Log("撞到了啦");
             if (!background1.activeSelf)
             {
                 return;
@@ -78,8 +77,6 @@ public class PlayerController : MonoBehaviour
             enemy.SetActive(false);
             transform.position = new Vector3(-7.0f, -3.8f, 0);
         }
-        else{
-            Debug.Log("撞到未知的東西，建議檢查程式!");
-        }
+
     }
 }
