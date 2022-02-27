@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # vscode
 *.vscode
+
+# ignore result folder
+/WebGLResult/
