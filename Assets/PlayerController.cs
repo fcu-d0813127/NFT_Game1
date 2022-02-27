@@ -43,13 +43,17 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.K))
         {
+            GetComponent<Animator>().SetBool("isAttack", true); //利用isAttack這個bool去判定玩家是否在攻擊而播出動畫
             Debug.Log(Vector3.Distance(enemy.transform.position, transform.position));
             if (Vector3.Distance(enemy.transform.position, transform.position) <= 3)
                 enemy.SetActive(false);
         }
+        else{
+            GetComponent<Animator>().SetBool("isAttack", false);
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other) //碰撞判定
     {
         if (other.gameObject.tag == "entry0to1")
         {
