@@ -5,12 +5,19 @@ using UnityEngine.Networking;
 
 public class ERC721URIExample : MonoBehaviour
 {
+    AllERC721 NFT;
     async void Start()
     {
+        NFT = GetComponent<AllERC721>();
+        List<string> NFTContract = await NFT.CheckNFT();
+        if (NFTContract == null)
+        {
+            return;
+        }
         string chain = "binance";
         string network = "testnet";
-        string contract = "0xB3A055A9Ca56EB02B2B8bD893D1d8E010eF87A5d";
-        string tokenId = "1";
+        string contract = NFTContract[0];
+        string tokenId = NFTContract[1];
 
         string uri = await ERC721.URI(chain, network, contract, tokenId);
 

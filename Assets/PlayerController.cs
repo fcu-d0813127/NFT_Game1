@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     WebGLReadSite read;
     WebGLInitPlayer init;
     StatusCheck check;
+    // NFT
+    // AllErc721Example allNFT;
 
     // Start is called before the first frame update
     async void Start()
