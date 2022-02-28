@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class PlayerController : MonoBehaviour
 {
-    // [SerializeField]:是private，但仍能出現在inspector
+    // [SerializeField] : 很像private，但在unity右側欄位可看到 
     [SerializeField] float move_speed;
     string now_background;
     string now_hash;
@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject background1;
     [SerializeField] GameObject background2;
     [SerializeField] GameObject enemy;
+    [SerializeField] GameObject entry0to1;
+    [SerializeField] GameObject entry1to0;
     [SerializeField] GameObject nft_show;
     // 控制玩家是否可移動
     bool enable_player;
@@ -49,22 +51,20 @@ public class PlayerController : MonoBehaviour
         if (now_background == "1")
         {
             background1.SetActive(true);
-            background2.SetActive(false);
-            enemy.SetActive(false);
+            entry0to1.SetActive(true);
             nft_show.SetActive(true);
         }
         else if (now_background == "2")
         {
-            background1.SetActive(false);
             background2.SetActive(true);
+            entry1to0.SetActive(true);
             enemy.SetActive(true);
-            nft_show.SetActive(false);
         }
         enable_player = true;
     }
 
     // Update is called once per frame
-    // Time.deltaTime:這一次Update()與下一次Update()呼叫之間隔時間，可解決個別電腦速度不同造成之呼叫速度差異
+    // Time.deltaTime:Update與下一次update時間花了多久，可解決電腦速度不同執行速度差異
     void Update()
     {
         if (!enable_player)
@@ -93,7 +93,14 @@ public class PlayerController : MonoBehaviour
         // 敵人擊殺按鍵
         if (Input.GetKey(KeyCode.K))
         {
-            enemy.SetActive(false);
+            GetComponent<Animator>().SetBool("isAttack", true); //利用isAttack這個bool去判定玩家是否在攻擊而播出動畫
+            Debug.Log(Vector3.Distance(enemy.transform.position, transform.position));
+            if (Vector3.Distance(enemy.transform.position, transform.position) <= 5)
+                enemy.SetActive(false);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("isAttack", false);
         }
     }
 
@@ -112,8 +119,7 @@ public class PlayerController : MonoBehaviour
     // 碰撞
     async void OnCollisionEnter2D(Collision2D other)
     {
-        // 目前判斷方式為透過碰撞的法線來判斷左右
-        if (other.contacts[0].normal == new Vector2(1.0f, 0))
+        if (other.gameObject.tag == "entry0to1")
         {
             if (!background1.activeSelf)
             {
@@ -126,11 +132,13 @@ public class PlayerController : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(true);
             enemy.SetActive(true);
+            entry0to1.SetActive(false);
+            entry1to0.SetActive(true);
             nft_show.SetActive(false);
             // 控制玩家切換場景後的初始位置
-            transform.position = new Vector3(7.0f, -3.8f, 0);
+            transform.position = new Vector3(7.0f, 3.8f, 0);
         }
-        else if (other.contacts[0].normal == new Vector2(-1.0f, 0))
+        else if (other.gameObject.tag == "entry1to0")
         {
             if (background1.activeSelf)
             {
@@ -143,9 +151,12 @@ public class PlayerController : MonoBehaviour
             background1.SetActive(true);
             background2.SetActive(false);
             enemy.SetActive(false);
+            entry0to1.SetActive(true);
+            entry1to0.SetActive(false);
             nft_show.SetActive(true);
             // 控制玩家切換場景後的初始位置
             transform.position = new Vector3(-7.0f, -3.8f, 0);
         }
+
     }
 }
