@@ -21,12 +21,15 @@ public class PlayerController : MonoBehaviour
     WebGLReadSite read;
     WebGLInitPlayer init;
     StatusCheck check;
-    // NFT
-    // AllErc721Example allNFT;
 
     // Start is called before the first frame update
     async void Start()
     {
+        // 連接component
+        transaction = GetComponent<WebGLSendContractExample>();
+        read = GetComponent<WebGLReadSite>();
+        init = GetComponent<WebGLInitPlayer>();
+        check = GetComponent<StatusCheck>();
         // 玩家移動速度
         move_speed = 10.0f;
         // 玩家是否可以移動
