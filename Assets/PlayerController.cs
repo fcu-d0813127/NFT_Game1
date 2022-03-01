@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float move_speed;
     string now_background;
     string now_hash;
+    bool debounce;
     // 透過Unity assign的Object
     [SerializeField] GameObject background1;
     [SerializeField] GameObject background2;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     WebGLReadSite read;
     WebGLInitPlayer init;
     StatusCheck check;
+    AttackEnemy attack_transaction;
 
     // Start is called before the first frame update
     async void Start()
@@ -32,6 +34,9 @@ public class PlayerController : MonoBehaviour
         read = GetComponent<WebGLReadSite>();
         init = GetComponent<WebGLInitPlayer>();
         check = GetComponent<StatusCheck>();
+        attack_transaction = GetComponent<AttackEnemy>();
+        // 解決擊殺敵人時送出多次交易
+        debounce = false;
         // 玩家移動速度
         move_speed = 10.0f;
         // 玩家是否可以移動
@@ -65,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     // Time.deltaTime:Update與下一次update時間花了多久，可解決電腦速度不同執行速度差異
-    void Update()
+    async void Update()
     {
         if (!enable_player)
         {
@@ -96,7 +101,17 @@ public class PlayerController : MonoBehaviour
             GetComponent<Animator>().SetBool("isAttack", true); //利用isAttack這個bool去判定玩家是否在攻擊而播出動畫
             Debug.Log(Vector3.Distance(enemy.transform.position, transform.position));
             if (Vector3.Distance(enemy.transform.position, transform.position) <= 5)
-                enemy.SetActive(false);
+            {
+                if (!debounce)
+                {
+                    debounce = true;
+                    enable_player = false;
+                    now_hash = await attack_transaction.OnSendContract();
+                    await check.Check(now_hash);
+                    enemy.SetActive(false);
+                    enable_player = true;
+                }
+            }
         }
         else
         {
