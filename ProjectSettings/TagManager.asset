@@ -6,8 +6,10 @@ TagManager:
   tags:
   - Background1
   - Background2
-  - entry0to1
+  - entry
+  - exit
   - entry1to0
+  - entry0to1
   layers:
   - Default
   - TransparentFX
