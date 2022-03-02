@@ -2,7 +2,7 @@
 ## 請使用UTF-8編碼開啟
 
 ## cookie 2022/03/02
-1. 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方buildAndRun可調整其順序
+1. 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方Build Settings可調整其順序
 2. 會先利用init生成player，在把場景切為backgroud
 3. 玩家移動在playerControllor, 入口及出口在entryControllor, 敵人在enermyControllor
 

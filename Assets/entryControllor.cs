@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class entryControllor : MonoBehaviour
+public class EntryControllor : MonoBehaviour
 {
     
     // [SerializeField] int thisScenes =  SceneManager.GetActiveScene().buildIndex;

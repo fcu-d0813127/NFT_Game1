@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class init : MonoBehaviour
+public class Init : MonoBehaviour
 {
     // public int sceneIndex;
     public GameObject player;
@@ -14,11 +14,5 @@ public class init : MonoBehaviour
         SceneManager.LoadScene(1);
         DontDestroyOnLoad(player);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
