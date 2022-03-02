@@ -7,11 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     // [SerializeField] : 很像private，但在unity右側欄位可看到 
     [SerializeField] float move_speed = 10.0f;
-    [SerializeField] GameObject enemy;
-
-    
     void Start()
     { 
+    
         
     }
     
@@ -39,13 +37,9 @@ public class PlayerController : MonoBehaviour
             transform.Translate(0, -move_speed * Time.deltaTime, 0);
         }
 
-
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.K)) //此處僅做動畫偵測
         {
             GetComponent<Animator>().SetBool("isAttack", true); //利用isAttack這個bool去判定玩家是否在攻擊而播出動畫!
-            Debug.Log(Vector3.Distance(enemy.transform.position, transform.position));
-            if (Vector3.Distance(enemy.transform.position, transform.position) <= 3)
-                enemy.SetActive(false);
         }
         else{
             GetComponent<Animator>().SetBool("isAttack", false);

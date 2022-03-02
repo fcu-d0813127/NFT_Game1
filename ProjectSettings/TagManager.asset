@@ -8,6 +8,8 @@ TagManager:
   - Background2
   - entry
   - exit
+  - SceneManager
+  - Enermy
   layers:
   - Default
   - TransparentFX

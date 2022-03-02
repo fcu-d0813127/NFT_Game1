@@ -1,17 +1,12 @@
 # NFT Game
 ## 請使用UTF-8編碼開啟
 
-cookie 2022/03/02
-1. 將場景(scenes)分離為backgroud1和2
-2. entry這個物件，可同時處理入口及出口
-3. 未來可能須大幅改變攻擊判斷方式，因此enermy部分未做分離
+## cookie 2022/03/02
+1. 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方buildAndRun可調整其順序
+2. 會先利用init生成player，在把場景切為backgroud
+3. 玩家移動在playerControllor, 入口及出口在entryControllor, 敵人在enermyControllor
 
-此版本目前尚有許多問題，切換場景時，所有物件將被重新reload，因為玩家切換場景時的位置很難控制
-有嘗試過DontDestroyOnLoad但仍有許多問題，未來再考慮導入，另有singleton模式尚未導入
-總之現在是個勉強能用的版本
-
-
-cookie 2022/02/24 ~ 2022/02/28
+## cookie 2022/02/24 ~ 2022/02/28
 1. 新增腳色攻擊動畫
 2. 新增自製很廢的腳色站立動畫 (原本要使用unity論壇的素材包但用起來有些問題，之後再嘗試)
 3. 增加黃金雞的碰撞
