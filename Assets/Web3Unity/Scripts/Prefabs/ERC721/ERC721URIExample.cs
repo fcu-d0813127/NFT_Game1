@@ -1,15 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ERC721URIExample : MonoBehaviour
 {
-    AllERC721 NFT;
     async void Start()
     {
-        NFT = GetComponent<AllERC721>();
-        List<string> NFTContract = await NFT.CheckNFT();
+        List<string> NFTContract = await AllERC721.CheckNFT();
         if (NFTContract == null)
         {
             return;

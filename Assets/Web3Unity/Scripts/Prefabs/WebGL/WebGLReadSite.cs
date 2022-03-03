@@ -1,13 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_WEBGL
 public class WebGLReadSite : MonoBehaviour
 {
-    async public Task<string> OnSendContract()
+    async static public Task<string> OnSendContract()
     {
         // set chain: ethereum, moonbeam, polygon etc
         string chain = "binance";
@@ -22,18 +19,9 @@ public class WebGLReadSite : MonoBehaviour
         // array of arguments for contract
         string args = String.Format("[\"{0}\"]", PlayerPrefs.GetString("Account"));
         // connects to user's browser wallet (metamask) to update contract state
-        try
-        {
-            string response = await EVM.Call(chain, network, contract, abi, method, args);
-            // response為smart contract return值
-            Debug.Log(response);
-            return response;
-        }
-        catch (Exception e)
-        {
-            Debug.LogException(e, this);
-            return "fail";
-        }
+        string response = await EVM.Call(chain, network, contract, abi, method, args);
+        // response為smart contract return值
+        Debug.Log(response);
+        return response;
     }
 }
-#endif
