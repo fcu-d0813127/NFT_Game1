@@ -1,13 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_WEBGL
 public class WebGLInitPlayer : MonoBehaviour
 {
-    async public Task<string> OnSendContract()
+    async static public Task<string> OnSendContract()
     {
         // smart contract method to call
         string method = "initPlayer";
@@ -33,8 +31,8 @@ public class WebGLInitPlayer : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogException(e, this);
-            return "fail";
+            Debug.LogException(e);
+            return "Fail at WebGLInitPlayer";
         }
     }
 }

@@ -1,13 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_WEBGL
 public class WebGLSendContractExample : MonoBehaviour
 {
-    async public Task<string> OnSendContract(int background_num)
+    async static public Task<string> OnSendContract(int background_num)
     {
         // smart contract method to call
         string method = "moveSite";
@@ -34,8 +32,8 @@ public class WebGLSendContractExample : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogException(e, this);
-            return "fail";
+            Debug.LogException(e);
+            return "Fail at WebGLSendContractExample";
         }
     }
 }

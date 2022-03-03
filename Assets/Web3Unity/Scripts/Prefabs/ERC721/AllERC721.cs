@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-using System;
 using System.Threading.Tasks;
 
 public class AllERC721 : MonoBehaviour
@@ -15,12 +13,12 @@ public class AllERC721 : MonoBehaviour
         public string balance { get; set; }
     }
 
-    async public Task<List<string>> CheckNFT()
+    async static public Task<List<string>> CheckNFT()
     {
         string chain = "binance";
         string network = "testnet"; // mainnet ropsten kovan rinkeby goerli
         string account = PlayerPrefs.GetString("Account");
-        // string account = "0x0D49b04f8DBe117aE1E6018AD95D39B65B2E2d13";
+        // string account = "0x23FdC87bEeC6da70cFD285eD947550fcA69a6e38";
         string contract = "";
         int first = 500;
         int skip = 0;
