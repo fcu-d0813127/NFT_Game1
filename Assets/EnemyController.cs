@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyControllor : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {  
     // Update is called once per frame
     void Update()

@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 10
-  enemy: {fileID: 0}
 --- !u!212 &452515932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -398,11 +397,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823539067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77c111e7a5b12b7408a90ed2b449f77b, type: 3}
+  m_Script: {fileID: 11500000, guid: cb94530772e5bfd49bff03fd5f9fc4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 0
-  player: {fileID: 452515927}
+  Player: {fileID: 452515927}
 --- !u!4 &1823539069
 Transform:
   m_ObjectHideFlags: 0
