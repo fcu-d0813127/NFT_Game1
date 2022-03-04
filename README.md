@@ -1,12 +1,20 @@
 # NFT Game
 ## 請使用UTF-8編碼開啟
 
-## cookie 2022/03/02
+
+## cookie 2022/03/04
+1. 把黃金雞變成prefab物件
+2. 新增EnemyCreater負責生成敵人物件
+3. 預設交易程式碼做在EntryControllor的enemyNum變數
+4. 利用PlayerPrefs儲存在Entry中拿到的變數，在場景2生成時使用
+
+
+### cookie 2022/03/02
 1. 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方Build Settings可調整其順序
 2. 會先利用init生成player，在把場景切為backgroud
 3. 玩家移動在playerControllor, 入口及出口在entryControllor, 敵人在enermyControllor
 
-## cookie 2022/02/24 ~ 2022/02/28
+### cookie 2022/02/24 ~ 2022/02/28
 1. 新增腳色攻擊動畫
 2. 新增自製很廢的腳色站立動畫 (原本要使用unity論壇的素材包但用起來有些問題，之後再嘗試)
 3. 增加黃金雞的碰撞
@@ -17,7 +25,7 @@
 8. 新增及替換一些素材
 
 
-## 功能 (by jimmy)
+### 功能 (by jimmy)
 - 使用方向鍵左右來移動玩家方塊(正方形)
 - 綠色背景為場景一，持續往左碰到邊屆時會進入到場景二
 - 場景二會出現敵人(菱形)，背景顏色改為紅色
