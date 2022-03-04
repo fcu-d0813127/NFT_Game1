@@ -13,7 +13,7 @@ public class EntryController : MonoBehaviour
             if (GetComponent<Renderer>().tag == "entry")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Enable = false;
-                Hash = await WebGLSendContractExample.OnSendContract(2);
+                Hash = await WebGLSend.OnMoveSite(2);
                 if (ContractError.CheckError(Hash)) {
                     return;
                 }
@@ -25,7 +25,7 @@ public class EntryController : MonoBehaviour
             else if (GetComponent<Renderer>().tag == "exit")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Enable = false;
-                Hash = await WebGLSendContractExample.OnSendContract(1);
+                Hash = await WebGLSend.OnMoveSite(1);
                 if (ContractError.CheckError(Hash)) {
                     return;
                 }

@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
                 }
                 Debounce = true;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Enable = false;
-                Hash = await AttackEnemy.OnSendContract();
+                Hash = await WebGLSend.OnEntityOperation();
                 if (ContractError.CheckError(Hash)) {
                     return;
                 }

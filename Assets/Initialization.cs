@@ -12,16 +12,16 @@ public class Initialization : MonoBehaviour
     async void Start()
     {
         // 讀取玩家最後離開遊戲時的場景
-        SceneNumber = await WebGLReadSite.OnSendContract();
+        SceneNumber = await WebGLCall.OnReadSite();
         // 該玩家為第一次遊玩，先初始化
         if (SceneNumber == "0")
         {
-            Hash = await WebGLInitPlayer.OnSendContract();
+            Hash = await WebGLSend.OnInitPlayer();
             if (ContractError.CheckError(Hash)) {
                 return;
             }
             await StatusCheck.Check(Hash);
-            SceneNumber = await WebGLReadSite.OnSendContract();
+            SceneNumber = await WebGLCall.OnReadSite();
         }
         //載入場景，並讓玩家不被摧毀
         SceneManager.LoadScene(Int32.Parse(SceneNumber) + 1);
