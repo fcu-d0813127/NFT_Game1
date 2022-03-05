@@ -17,6 +17,9 @@
 8. 新增及替換一些素材
 
 ## 功能
+- 2022/03/04
+  - 修改程式碼遵循"[C# at Google Style Guide](https://google.github.io/styleguide/csharp-style.html)"
+  - 修改發送交易的程式架構
 - 2022/03/01
   - 新增與敵人互動時發送交易
 - 2022/02/27

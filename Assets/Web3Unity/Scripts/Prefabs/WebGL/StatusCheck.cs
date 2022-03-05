@@ -1,19 +1,16 @@
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class StatusCheck : MonoBehaviour
-{
-    async static public Task Check(string hash)
-    {
-        string chain = "binance";
-        string network = "testnet";
-        string transaction = hash;
-        string txStatus = "";
+public class StatusCheck : MonoBehaviour {
+  public static async Task Check(string hash) {
+    string _chain = "binance";
+    string _network = "testnet";
+    string _transaction = hash;
+    string _txStatus = "";
 
-        while (txStatus != "success")
-        {
-            txStatus = await EVM.TxStatus(chain, network, transaction);
-            print(txStatus); // success, fail, pending
-        }
+    while (_txStatus != "success") {
+      _txStatus = await EVM.TxStatus(_chain, _network, _transaction);
+      Debug.Log(_txStatus); // success, fail, pending
     }
+  }
 }
