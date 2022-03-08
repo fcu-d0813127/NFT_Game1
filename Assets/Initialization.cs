@@ -22,7 +22,7 @@ public class Initialization : MonoBehaviour {
       _sceneNumber = await WebGL.Call.OnReadSite();
     }
     //載入場景，並讓玩家不被摧毀
-    SceneManager.LoadScene(Int32.Parse(_sceneNumber) + 1);
+    SceneManager.LoadScene(Int32.Parse(_sceneNumber));
     DontDestroyOnLoad(_player);
   }
 }

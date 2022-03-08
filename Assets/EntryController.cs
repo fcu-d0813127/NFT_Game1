@@ -20,20 +20,22 @@ public class EntryController : MonoBehaviour {
       if (tag == "entry") {
         _playerScript.Enable = false;
         try {
-          _hash = await WebGL.Send.OnMoveSite(2);
+          int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+          _hash = await WebGL.Send.OnMoveSite(nextSceneBuildIndex);
           await StatusCheck.Check(_hash);
-          SceneManager.LoadScene(3);
+          SceneManager.LoadScene(nextSceneBuildIndex);
           _player.transform.position = new Vector3(7.0f, 3.8f, 0);
         } catch (Exception e) {
           Debug.LogException(e, this);
         }
         _playerScript.Enable = true;
-      } else if ( tag == "exit" ) {
+      } else if (tag == "exit") {
         _playerScript.Enable = false;
         try {
-          _hash = await WebGL.Send.OnMoveSite(1);
+          int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex - 1;
+          _hash = await WebGL.Send.OnMoveSite(nextSceneBuildIndex);
           await StatusCheck.Check(_hash);
-          SceneManager.LoadScene(2);
+          SceneManager.LoadScene(nextSceneBuildIndex);
           _player.transform.position = new Vector3(-7.0f, -3.8f, 0);
         } catch (Exception e) {
           Debug.LogException(e, this);

@@ -38,15 +38,15 @@ public class WebGL {
       return await OnSend();
     }
 
-    public static async Task<string> OnMoveSite( int background ) {
+    public static async Task<string> OnMoveSite(int background) {
       _method = "moveSite";
       _args = String.Format("[\"{0}\"]", background);
       return await OnSend();
     }
 
-    public static async Task<string> OnEntityOperation() {
-      _method = "entityOperation";
-      _args = "[]";
+    public static async Task<string> OnKillEnemy(int background) {
+      _method = "killEnemy";
+      _args = String.Format("[\"{0}\", \"1\"]", background);
       return await OnSend();
     }
   }

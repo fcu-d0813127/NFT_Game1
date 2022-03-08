@@ -16,7 +16,10 @@
 7. 把rigidbody 2d的gravity scale調整為0，不然他會受重力一直下掉
 8. 新增及替換一些素材
 
-## 功能
+## 日誌
+- 2022/03/08
+  - 將NFT改為使用ipfs取得圖片
+  - 修改EnemyController所發送的交易方法
 - 2022/03/04
   - 修改程式碼遵循"[C# at Google Style Guide](https://google.github.io/styleguide/csharp-style.html)"
   - 修改發送交易的程式架構

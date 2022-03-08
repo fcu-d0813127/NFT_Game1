@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class EnemyController : MonoBehaviour {
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour {
         _debounce = true;
         _playerScript.Enable = false;
         try {
-          _hash = await WebGL.Send.OnEntityOperation();
+          _hash = await WebGL.Send.OnKillEnemy(SceneManager.GetActiveScene().buildIndex);
           await StatusCheck.Check(_hash);
           this.gameObject.SetActive(false);
         } catch (Exception e) {
