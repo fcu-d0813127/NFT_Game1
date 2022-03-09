@@ -23,6 +23,8 @@ public class EntryController : MonoBehaviour {
           int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
           _hash = await WebGL.Send.OnMoveSite(nextSceneBuildIndex);
           await StatusCheck.Check(_hash);
+          string enemyNum = await WebGL.Call.OnReadEnemyNum(nextSceneBuildIndex);
+          PlayerPrefs.SetInt("enemyNum", Int32.Parse(enemyNum));
           SceneManager.LoadScene(nextSceneBuildIndex);
           _player.transform.position = new Vector3(7.0f, 3.8f, 0);
         } catch (Exception e) {
@@ -35,6 +37,8 @@ public class EntryController : MonoBehaviour {
           int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex - 1;
           _hash = await WebGL.Send.OnMoveSite(nextSceneBuildIndex);
           await StatusCheck.Check(_hash);
+          string enemyNum = await WebGL.Call.OnReadEnemyNum(nextSceneBuildIndex);
+          PlayerPrefs.SetInt("enemyNum", Int32.Parse(enemyNum));
           SceneManager.LoadScene(nextSceneBuildIndex);
           _player.transform.position = new Vector3(-7.0f, -3.8f, 0);
         } catch (Exception e) {

@@ -1,10 +1,15 @@
 # NFT Game
 ## 請使用UTF-8編碼開啟
 
-## cookie 2022/03/02
-1. 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方Build Settings可調整其順序
-2. 會先利用init生成player，在把場景切為backgroud
-3. 玩家移動在PlayerController, 入口及出口在PntryController, 敵人在EnemyController
+## cookie 202203/02 ～ 2022/03/08
+- 新增敵人血條
+- 把黃金雞變成prefab物件
+- 新增EnemyCreater負責生成敵人物件
+- 預設交易程式碼做在EntryControllor的enemyNum變數
+- 利用PlayerPrefs儲存在Entry中拿到的變數，在場景2生成時使用
+- 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方Build Settings可調整其順序
+- 會先利用init生成player，在把場景切為backgroud
+- 玩家移動在playerControllor, 入口及出口在entryControllor, 敵人在enermyControllor
 
 ## cookie 2022/02/24 ~ 2022/02/28
 1. 新增腳色攻擊動畫

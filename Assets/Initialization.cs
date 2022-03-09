@@ -22,6 +22,8 @@ public class Initialization : MonoBehaviour {
       _sceneNumber = await WebGL.Call.OnReadSite();
     }
     //載入場景，並讓玩家不被摧毀
+    string enemyNum = await WebGL.Call.OnReadEnemyNum(Int32.Parse(_sceneNumber));
+    PlayerPrefs.SetInt("enemyNum", Int32.Parse(enemyNum));
     SceneManager.LoadScene(Int32.Parse(_sceneNumber));
     DontDestroyOnLoad(_player);
   }

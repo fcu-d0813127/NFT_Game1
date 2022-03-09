@@ -78,5 +78,11 @@ public class WebGL {
       _method = "readSite";
       return await OnCall();
     }
+
+    public static async Task<string> OnReadEnemyNum(int background) {
+      _method = "map";
+      _args = String.Format("[\"{0}\"]", background);
+      return await OnCall();
+    }
   }
 }
