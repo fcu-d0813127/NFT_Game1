@@ -11,7 +11,7 @@ public class EntryController : MonoBehaviour {
                 _enemyNum = 3;
                 PlayerPrefs.SetInt("enemyNum", _enemyNum);  //將怪物數存在"enemyNum"的key 
                 SceneManager.LoadScene(_index + 1);
-                GameObject.FindGameObjectWithTag ("Player").transform.position = new Vector3(7.0f, 3.8f, 0);
+                GameObject.FindGameObjectWithTag ("Player").transform.position = new Vector3(7.0f, 3.2f, 0);
                 Debug.Log(PlayerPrefs.GetInt("enemyNum"));
 
             } else if(GetComponent<Renderer>().tag == "exit"){
