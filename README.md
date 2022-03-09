@@ -2,27 +2,25 @@
 ## 請使用UTF-8編碼開啟
 
 
-## cookie 2022/03/04
-1. 把黃金雞變成prefab物件
-2. 新增EnemyCreater負責生成敵人物件
-3. 預設交易程式碼做在EntryControllor的enemyNum變數
-4. 利用PlayerPrefs儲存在Entry中拿到的變數，在場景2生成時使用
-
-
-### cookie 2022/03/02
-1. 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方Build Settings可調整其順序
-2. 會先利用init生成player，在把場景切為backgroud
-3. 玩家移動在playerControllor, 入口及出口在entryControllor, 敵人在enermyControllor
+## cookie 202203/02 ～ 2022/03/08
+- 新增敵人血條
+- 把黃金雞變成prefab物件
+- 新增EnemyCreater負責生成敵人物件
+- 預設交易程式碼做在EntryControllor的enemyNum變數
+- 利用PlayerPrefs儲存在Entry中拿到的變數，在場景2生成時使用
+- 將場景分離為多個，分別為init, backgroud1, backgroud2，在左上方Build Settings可調整其順序
+- 會先利用init生成player，在把場景切為backgroud
+- 玩家移動在playerControllor, 入口及出口在entryControllor, 敵人在enermyControllor
 
 ### cookie 2022/02/24 ~ 2022/02/28
-1. 新增腳色攻擊動畫
-2. 新增自製很廢的腳色站立動畫 (原本要使用unity論壇的素材包但用起來有些問題，之後再嘗試)
-3. 增加黃金雞的碰撞
-4. 將腳色的z軸鎖定，因其物件內設定會沿著黃金雞旋轉，先暫時這樣解決
-5. 部份加上註解
-6. 加上上下移動
-7. 把rigidbody 2d的gravity scale調整為0，不然他會受重力一直下掉
-8. 新增及替換一些素材
+- 新增腳色攻擊動畫
+- 新增自製很廢的腳色站立動畫 (原本要使用unity論壇的素材包但用起來有些問題，之後再嘗試)
+- 增加黃金雞的碰撞
+- 將腳色的z軸鎖定，因其物件內設定會沿著黃金雞旋轉，先暫時這樣解決
+- 部份加上註解
+- 加上上下移動
+- 把rigidbody 2d的gravity scale調整為0，不然他會受重力一直下掉
+- 新增及替換一些素材
 
 
 ### 功能 (by jimmy)
