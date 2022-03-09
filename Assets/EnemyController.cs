@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {  
-    [SerializeField] int _hp = 0;
-    [SerializeField] int _hpMax = 0;
+    [SerializeField] int _hp;
+    [SerializeField] int _hpMax;
     [SerializeField] GameObject hpBar;
 
     void Start() {
