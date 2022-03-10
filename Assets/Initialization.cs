@@ -4,6 +4,7 @@ using System;
 
 public class Initialization : MonoBehaviour {
   [SerializeField] GameObject _player;
+  [SerializeField] GameObject _trader;
   string _sceneNumber;
   string _hash;
 
@@ -28,5 +29,6 @@ public class Initialization : MonoBehaviour {
     PlayerPrefs.SetInt("enemyNum", Int32.Parse(enemyNum));
     SceneManager.LoadScene(Int32.Parse(_sceneNumber));
     DontDestroyOnLoad(_player);
+    DontDestroyOnLoad(_trader);
   }
 }

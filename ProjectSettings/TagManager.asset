@@ -10,6 +10,7 @@ TagManager:
   - exit
   - SceneManager
   - Enermy
+  - Trader
   layers:
   - Default
   - TransparentFX

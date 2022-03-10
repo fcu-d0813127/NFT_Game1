@@ -18,14 +18,6 @@ public class EntryController : MonoBehaviour {
     if (collision.gameObject.tag == "Player") {
       if (tag == "entry") {
         _playerScript.Enable = false;
-        if (PlayerPrefs .GetInt("killEnemyNum") != 0) {
-          try {
-            _hash = await WebGL.Send.OnKillEnemy(SceneManager.GetActiveScene().buildIndex, PlayerPrefs.GetInt("killEnemyNum"));
-            await StatusCheck.Check(_hash);
-          } catch (Exception e) {
-            Debug.LogException(e, this);
-          }
-        }
         try {
           int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
           Debug.Log(nextSceneBuildIndex);
@@ -43,14 +35,6 @@ public class EntryController : MonoBehaviour {
         _playerScript.Enable = true;
       } else if (tag == "exit") {
         _playerScript.Enable = false;
-        if (PlayerPrefs.GetInt("killEnemyNum") != 0) {
-          try {
-            _hash = await WebGL.Send.OnKillEnemy(SceneManager.GetActiveScene().buildIndex, PlayerPrefs.GetInt("killEnemyNum"));
-            await StatusCheck.Check(_hash);
-          } catch (Exception e) {
-            Debug.LogException(e, this);
-          }
-        }
         try {
           int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex - 1;
           Debug.Log(nextSceneBuildIndex);
