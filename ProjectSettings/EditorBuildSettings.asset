@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/backgroud2.unity
     guid: 15e684dbd5a45b642b93692888d529e2
+  - enabled: 1
+    path: Assets/Scenes/backgroud3.unity
+    guid: 8531a5b0c70fabd448ff1d79ca9a2f79
+  - enabled: 1
+    path: Assets/Scenes/backgroud4.unity
+    guid: ee0ee54a9d06b12409888c30bb8d9c01
+  - enabled: 1
+    path: Assets/Scenes/backgroud5.unity
+    guid: 9ee783d9d7f0d064aa22f2f2d0f60790
+  - enabled: 1
+    path: Assets/Scenes/backgroud6.unity
+    guid: c41bea300058edb41a3f670b9142e1a9
+  - enabled: 1
+    path: Assets/Scenes/backgroud7.unity
+    guid: 9acd4a3f0ce3a6f479bfb4090bd76e36
+  - enabled: 1
+    path: Assets/Scenes/backgroud8.unity
+    guid: 21f719b05517cb24f86393fd2a866a3d
   m_configObjects: {}

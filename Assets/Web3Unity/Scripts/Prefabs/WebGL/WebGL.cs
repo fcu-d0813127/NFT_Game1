@@ -44,9 +44,9 @@ public class WebGL {
       return await OnSend();
     }
 
-    public static async Task<string> OnKillEnemy(int background) {
+    public static async Task<string> OnKillEnemy(int background, int killEnemyNum) {
       _method = "killEnemy";
-      _args = String.Format("[\"{0}\", \"1\"]", background);
+      _args = String.Format("[\"{0}\", \"{1}\"]", background, killEnemyNum);
       return await OnSend();
     }
   }

@@ -16,34 +16,55 @@ public class EntryController : MonoBehaviour {
   async void OnCollisionEnter2D(Collision2D collision) {
     //當碰撞到的是玩家
     if (collision.gameObject.tag == "Player") {
-      //下面的2和1，亦可替換成nextScenes，更有彈性
       if (tag == "entry") {
         _playerScript.Enable = false;
+        if (PlayerPrefs .GetInt("killEnemyNum") != 0) {
+          try {
+            _hash = await WebGL.Send.OnKillEnemy(SceneManager.GetActiveScene().buildIndex, PlayerPrefs.GetInt("killEnemyNum"));
+            await StatusCheck.Check(_hash);
+          } catch (Exception e) {
+            Debug.LogException(e, this);
+          }
+        }
         try {
           int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+          Debug.Log(nextSceneBuildIndex);
           _hash = await WebGL.Send.OnMoveSite(nextSceneBuildIndex);
           await StatusCheck.Check(_hash);
           string enemyNum = await WebGL.Call.OnReadEnemyNum(nextSceneBuildIndex);
           PlayerPrefs.SetInt("enemyNum", Int32.Parse(enemyNum));
+          Debug.Log("on load");
           SceneManager.LoadScene(nextSceneBuildIndex);
           _player.transform.position = new Vector3(7.0f, 3.8f, 0);
         } catch (Exception e) {
           Debug.LogException(e, this);
         }
+        PlayerPrefs.SetInt("killEnemyNum", 0);
         _playerScript.Enable = true;
       } else if (tag == "exit") {
         _playerScript.Enable = false;
+        if (PlayerPrefs.GetInt("killEnemyNum") != 0) {
+          try {
+            _hash = await WebGL.Send.OnKillEnemy(SceneManager.GetActiveScene().buildIndex, PlayerPrefs.GetInt("killEnemyNum"));
+            await StatusCheck.Check(_hash);
+          } catch (Exception e) {
+            Debug.LogException(e, this);
+          }
+        }
         try {
           int nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex - 1;
+          Debug.Log(nextSceneBuildIndex);
           _hash = await WebGL.Send.OnMoveSite(nextSceneBuildIndex);
           await StatusCheck.Check(_hash);
           string enemyNum = await WebGL.Call.OnReadEnemyNum(nextSceneBuildIndex);
           PlayerPrefs.SetInt("enemyNum", Int32.Parse(enemyNum));
+          Debug.Log("on load");
           SceneManager.LoadScene(nextSceneBuildIndex);
           _player.transform.position = new Vector3(-7.0f, -3.8f, 0);
         } catch (Exception e) {
           Debug.LogException(e, this);
         }
+        PlayerPrefs.SetInt("killEnemyNum", 0);
         _playerScript.Enable = true;
       }
     }

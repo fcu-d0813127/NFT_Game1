@@ -9,6 +9,8 @@ public class Initialization : MonoBehaviour {
 
   // Start is called before the first frame update
   async void Start() {
+    PlayerPrefs.SetInt("s", 1);
+    PlayerPrefs.SetInt("killEnemyNum", 0);
     // 讀取玩家最後離開遊戲時的場景
     _sceneNumber = await WebGL.Call.OnReadSite();
     // 該玩家為第一次遊玩，先初始化
